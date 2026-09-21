@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Getsemaní, El Amor Eterno De Mi Vida 🌻✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at center, #180928 0%, #05010a 100%);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #canvas-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      max-width: 580px;
+      width: 100%;
+    }
+
+    /* PANTALLA INICIAL - CARTA/SOBRE MÁGICO */
+    #start-btn-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 85vh;
+      transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .envelope-box {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, #facc15, #ca8a04);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 60px;
+      cursor: pointer;
+      box-shadow: 0 0 50px rgba(250, 204, 21, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.5);
+      animation: floatBox 3s infinite ease-in-out;
+      margin-bottom: 25px;
+      border: 3px solid #fef08a;
+      position: relative;
+    }
+
+    @keyframes floatBox {
+      0%, 100% { transform: translateY(0) rotate(0deg); box-shadow: 0 10px 40px rgba(250, 204, 21, 0.6); }
+      50% { transform: translateY(-15px) rotate(4deg); box-shadow: 0 25px 60px rgba(250, 204, 21, 0.9); }
+    }
+
+    .tap-text {
+      color: #fef08a;
+      font-size: 1.3rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.6);
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    /* CONTENIDO PRINCIPAL */
+    #main-content {
+      display: none;
+      opacity: 0;
+      transform: scale(0.9) translateY(40px);
+      transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .title-romantic {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      color: #facc15;
+      text-shadow: 0 0 25px rgba(250, 204, 21, 0.9), 0 0 50px rgba(234, 179, 8, 0.5);
+      margin-bottom: 0px;
+      line-height: 1.1;
+    }
+
+    .date-badge {
+      display: inline-block;
+      background: rgba(250, 204, 21, 0.15);
+      border: 1px solid rgba(250, 204, 21, 0.5);
+      padding: 6px 22px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: #fef08a;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
+    }
+
+    /* RAMO DE FLORES DE LUJO */
+    .flower-svg {
+      width: 320px;
+      height: 330px;
+      margin: 0 auto;
+      filter: drop-shadow(0 0 25px rgba(250, 204, 21, 0.6));
+    }
+
+    .stem {
+      stroke: #22c55e;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 250;
+      stroke-dashoffset: 250;
+      animation: growStem 2.2s forwards ease-in-out;
+    }
+
+    .flower-group {
+      transform-origin: center;
+      transform: scale(0);
+      animation: bloom 1.4s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .f1 { animation-delay: 1.6s; }
+    .f2 { animation-delay: 2.2s; }
+    .f3 { animation-delay: 2.7s; }
+    .f4 { animation-delay: 3.1s; }
+
+    @keyframes growStem { to { stroke-dashoffset: 0; } }
+    @keyframes bloom { to { transform: scale(1); } }
+
+    /* MARCO PARA LA FOTO DE PAREJA */
+    .photo-container {
+      margin: 25px auto 15px;
+      width: 100%;
+      max-width: 380px;
+      padding: 8px;
+      background: rgba(250, 204, 21, 0.15);
+      border: 1.5px solid rgba(250, 204, 21, 0.5);
+      border-radius: 24px;
+      box-shadow: 0 0 30px rgba(250, 204, 21, 0.25);
+      backdrop-filter: blur(10px);
+    }
+
+    .photo-container img {
+      width: 100%;
+      height: auto;
+      max-height: 420px;
+      object-fit: contain;
+      border-radius: 18px;
+      display: block;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* CARTA DE AMOR DE ELEGANTE DISEÑO */
+    .letter-card {
+      background: rgba(20, 10, 38, 0.85);
+      border: 1.5px solid rgba(250, 204, 21, 0.45);
+      border-radius: 28px;
+      padding: 35px 25px;
+      margin-top: 15px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(250, 204, 21, 0.2);
+      position: relative;
+    }
+
+    .letter-card::before {
+      content: '🌻✨🌻';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 22px;
+      background: #0a0314;
+      padding: 2px 16px;
+      border-radius: 50px;
+      border: 1px solid rgba(250, 204, 21, 0.4);
+    }
+
+    .letter-text {
+      font-size: 1.08rem;
+      line-height: 1.9;
+      color: #f8fafc;
+      font-weight: 300;
+      text-align: justify;
+    }
+
+    .highlight-gold {
+      color: #facc15;
+      font-weight: 700;
+      text-shadow: 0 0 12px rgba(250, 204, 21, 0.5);
+    }
+
+    .heart-beat {
+      display: inline-block;
+      color: #f43f5e;
+      animation: heartPulse 1.1s infinite;
+    }
+
+    @keyframes heartPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.4); }
+    }
+
+    .signature {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem;
+      color: #facc15;
+      margin-top: 25px;
+      text-align: right;
+      text-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+    }
+
+    /* BOTÓN DE CORAZONES INTERACTIVOS */
+    .touch-heart-btn {
+      margin-top: 28px;
+      background: linear-gradient(135deg, #facc15, #eab308);
+      color: #1a0c2e;
+      border: none;
+      padding: 16px 36px;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(250, 204, 21, 0.6);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .touch-heart-btn:active {
+      transform: scale(0.92);
+    }
+
+    .footer-note {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #a7f3d0;
+      letter-spacing: 1.5px;
+    }
+  </style>
+</head>
+<body>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112185.mp3" type="audio/mpeg">
+  </audio>
+
+  <canvas id="canvas-background"></canvas>
+
+  <div class="container">
+
+    <!-- PANTALLA INICIAL -->
+    <div id="start-btn-container">
+      <div class="envelope-box" onclick="openSurprise()">
+        💌
+      </div>
+      <div class="tap-text">TOCA AQUÍ, MI VIDA ✨</div>
+      <p style="color: #cbd5e1; font-size: 0.9rem; margin-top: 15px; font-weight: 300;">Tengo algo que decirte de todo corazón 💛</p>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div id="main-content">
+      
+      <h1 class="title-romantic">Para mi bebe peshiosha y hemoshaaaa</h1>
+      <div class="date-badge">✨ 21 de Septiembre ✨</div>
+
+      <!-- RAMO SVG ANIMADO -->
+      <svg class="flower-svg" viewBox="0 0 320 340">
+        <!-- Tallos -->
+        <path class="stem" d="M160 330 Q160 220 160 115" />
+        <path class="stem" style="animation-delay: 0.4s;" d="M160 330 Q130 230 90 150" />
+        <path class="stem" style="animation-delay: 0.8s;" d="M160 330 Q190 230 230 150" />
+        <path class="stem" style="animation-delay: 1.2s;" d="M160 330 Q160 260 160 190" />
+
+        <!-- Lazo de Regalo -->
+        <path d="M142 260 Q160 275 178 260 Q160 245 142 260" fill="#f43f5e" />
+        <path d="M160 260 L130 310 M160 260 L190 310" stroke="#f43f5e" stroke-width="5" stroke-linecap="round" />
+
+        <!-- Girasol Principal Central -->
+        <g class="flower-group f1" style="transform-origin: 160px 115px;">
+          <g fill="#facc15">
+            <ellipse cx="160" cy="65" rx="11" ry="28" />
+            <ellipse cx="160" cy="165" rx="11" ry="28" />
+            <ellipse cx="110" cy="115" rx="28" ry="11" />
+            <ellipse cx="210" cy="115" rx="28" ry="11" />
+            <ellipse cx="125" cy="80" rx="11" ry="28" transform="rotate(-45 125 80)" />
+            <ellipse cx="195" cy="150" rx="11" ry="28" transform="rotate(-45 195 150)" />
+            <ellipse cx="195" cy="80" rx="11" ry="28" transform="rotate(45 195 80)" />
+            <ellipse cx="125" cy="150" rx="11" ry="28" transform="rotate(45 125 150)" />
+          </g>
+          <circle cx="160" cy="115" r="24" fill="#451a03" stroke="#78350f" stroke-width="3.5" />
+          <circle cx="160" cy="115" r="15" fill="#290e02" />
+        </g>
+
+        <!-- Flor Izquierda -->
+        <g class="flower-group f2" style="transform-origin: 90px 150px;">
+          <g fill="#fbbf24">
+            <ellipse cx="90" cy="110" rx="9" ry="22" />
+            <ellipse cx="90" cy="190" rx="9" ry="22" />
+            <ellipse cx="50" cy="150" rx="22" ry="9" />
+            <ellipse cx="130" cy="150" rx="22" ry="9" />
+            <ellipse cx="62" cy="122" rx="9" ry="22" transform="rotate(-45 62 122)" />
+            <ellipse cx="118" cy="178" rx="9" ry="22" transform="rotate(-45 118 178)" />
+            <ellipse cx="118" cy="122" rx="9" ry="22" transform="rotate(45 118 122)" />
+            <ellipse cx="62" cy="178" rx="9" ry="22" transform="rotate(45 62 178)" />
+          </g>
+          <circle cx="90" cy="150" r="18" fill="#451a03" />
+        </g>
+
+        <!-- Flor Derecha -->
+        <g class="flower-group f3" style="transform-origin: 230px 150px;">
+          <g fill="#fbbf24">
+            <ellipse cx="230" cy="110" rx="9" ry="22" />
+            <ellipse cx="230" cy="190" rx="9" ry="22" />
+            <ellipse cx="190" cy="150" rx="22" ry="9" />
+            <ellipse cx="270" cy="150" rx="22" ry="9" />
+            <ellipse cx="202" cy="122" rx="9" ry="22" transform="rotate(-45 202 122)" />
+            <ellipse cx="258" cy="178" rx="9" ry="22" transform="rotate(-45 258 178)" />
+            <ellipse cx="258" cy="122" rx="9" ry="22" transform="rotate(45 258 122)" />
+            <ellipse cx="202" cy="178" rx="9" ry="22" transform="rotate(45 202 178)" />
+          </g>
+          <circle cx="230" cy="150" r="18" fill="#451a03" />
+        </g>
+
+        <!-- Flor Pequeña Frontal -->
+        <g class="flower-group f4" style="transform-origin: 160px 190px;">
+          <g fill="#fef08a">
+            <ellipse cx="160" cy="160" rx="7" ry="16" />
+            <ellipse cx="160" cy="220" rx="7" ry="16" />
+            <ellipse cx="130" cy="190" rx="16" ry="7" />
+            <ellipse cx="190" cy="190" rx="16" ry="7" />
+          </g>
+          <circle cx="160" cy="190" r="12" fill="#78350f" />
+        </g>
+      </svg>
+
+      <!-- FOTO DE LA PAREJA (AQUÍ REEMPLAZAS CON TU CÓDIGO BASE64 SI USAS ESE MÉTODO) -->
+      <div class="photo-container">
+        <img src="foto.jpg" alt="Fernando y Getsemaní">
+      </div>
+
+       <!-- CARTA EMOTIVA -->
+      <div class="letter-card">
+        <div class="letter-text">
+          <p>
+            Mi amor, hoy en todo el mundo se regalan flores que en unos días se van a marchitar, pero yo quería regalarte algo diferente, <span class="highlight-gold">flores eternas creadas exclusivamente para ti</span>, hechas línea por línea, pensando en ti en cada segundo mi vida hermosa
+          </p>
+          <br>
+          <p>
+            No hay día en que no le dé gracias a la vida por tenerte a mi lado. Tu sonrisa, tu ternura y la forma en que me miras lo cambian todo, <span class="highlight-gold">Te amo muchísimo mi amor <span class="heart-beat">🥹❤️</span></span>, de una forma tan profunda que sabes que nunca acabaria de decirte cuanto te amo mi amor
+          </p>
+          <br>
+          <p>
+            Gracias por ser mi lugar seguro, mi felicidad constante y mi persona favorita, <span class="highlight-gold">eres lo mejor de mi vida, mi amor, <span class="heart-beat">🥹❤️</span></span> estas flores son un recordatorio de que mi amor por ti florece todos los días del año y no se va a apagar nunca
+          </p>
+        </div>
+        <div class="signature">
+          Por siempre tuyo, tu bebé chiquito ❤️
+        </div>
+      </div>
+
+      <button class="touch-heart-btn" onclick="spawnHeartRain()">
+        <span>¡Lluvia de amor para ti!</span> <span class="heart-beat">💛</span>
+      </button>
+
+      <div class="footer-note">
+        🌻 Que estas flores te recuerden siempre lo mucho que te amo 🌻
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // PARTÍCULAS Y PÉTALOS FLOTANTES
+    const canvas = document.getElementById('canvas-background');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    const particleCount = 55;
+
+    class Particle {
+      constructor() { this.reset(); }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = -20;
+        this.size = Math.random() * 14 + 6;
+        this.speedY = Math.random() * 1.6 + 0.7;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 1.2;
+        this.angle = Math.random() * 360;
+        this.spin = (Math.random() - 0.5) * 2;
+        this.opacity = Math.random() * 0.8 + 0.2;
+        this.type = Math.random() > 0.25 ? 'petal' : 'star';
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += Math.sin(this.y / 35) + this.speedX;
+        this.angle += this.spin;
+        if (this.y > height + 20) this.reset();
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.angle * Math.PI) / 180);
+        ctx.globalAlpha = this.opacity;
+
+        if (this.type === 'petal') {
+          ctx.fillStyle = '#facc15';
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.quadraticCurveTo(this.size / 2, -this.size, this.size, 0);
+          ctx.quadraticCurveTo(this.size / 2, this.size, 0, 0);
+          ctx.fill();
+        } else {
+          ctx.fillStyle = '#ffffff';
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size / 3.5, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    // ABRIR SORPRESA
+    function openSurprise() {
+      const btn = document.getElementById('start-btn-container');
+      const content = document.getElementById('main-content');
+      const music = document.getElementById('bg-music');
+
+      music.volume = 0.65;
+      music.play().catch(e => console.log("Audio play blocked"));
+
+      btn.style.opacity = '0';
+      btn.style.transform = 'scale(0.7)';
+
+      setTimeout(() => {
+        btn.style.display = 'none';
+        content.style.display = 'block';
+
+        setTimeout(() => {
+          content.style.opacity = '1';
+          content.style.transform = 'scale(1) translateY(0)';
+          spawnHeartRain();
+        }, 60);
+      }, 900);
+    }
+
+    // LLUVIA DE CORAZONES
+    function spawnHeartRain() {
+      for (let i = 0; i < 40; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.innerHTML = ['💛', '❤️', '🌻', '✨'][Math.floor(Math.random() * 4)];
+          heart.style.position = 'fixed';
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.top = '100vh';
+          heart.style.fontSize = (Math.random() * 28 + 22) + 'px';
+          heart.style.zIndex = '9999';
+          heart.style.transition = 'transform 3.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 3.5s';
+          heart.style.pointerEvents = 'none';
+
+          document.body.appendChild(heart);
+
+          setTimeout(() => {
+            heart.style.transform = `translateY(-${Math.random() * 85 + 75}vh) scale(${Math.random() * 0.8 + 1})`;
+            heart.style.opacity = '0';
+          }, 50);
+
+          setTimeout(() => heart.remove(), 3600);
+        }, i * 70);
+      }
+    }
+  </script>
+</body>
+</html>
